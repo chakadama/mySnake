@@ -1,0 +1,47 @@
+#include <iostream>
+#include <windows.h>
+#include <conio.h>
+
+int main() {
+	int speed = 1000; // 初始速度：1秒/次
+	int count = 1;
+
+	while (true) {
+		// 检测键盘输入
+		if (_kbhit()) {
+			int ch = _getch();
+			if (ch == 0 || ch == 0xE0) { // 处理扩展键（如方向键）
+				ch = _getch(); // 获取第二个字节
+				if (ch == 72) { // 上方向键的第二个字节值
+					speed /= 2; // 速度翻倍
+					if (speed < 10) speed = 10; // 设置最小延迟
+				}
+				else if (ch == 80) { // 下方向键的第二个字节值
+					speed *= 2; // 减慢到1/2速度（延迟时间加倍）
+				}
+				else if (ch == 77) { // 右方向键的第二个字节值
+					speed /= 3; // 加到3倍速（延迟时间减少到1/3）
+					if (speed < 10) speed = 10; // 设置最小延迟
+				}
+				else if (ch == 75) { // 左方向键的第二个字节值
+					speed *= 3; // 减慢到1/3倍速（延迟时间增加到3倍）
+				}
+			}
+			else if (ch == 'h' || ch == 'H') { // 按h键（大小写都可以）
+				speed = 1000; // 重置到1秒一次
+				count = 1; // 重置计数
+			}
+			else if (ch == 'q' || ch == 'Q') { // 按q退出（大小写都可以）
+				break;
+			}
+		}
+
+		// 打印当前数字
+		std::cout << count++ << " ";
+		std::cout.flush();
+
+		// 延迟控制
+		Sleep(speed);
+	}
+	return 0;
+}

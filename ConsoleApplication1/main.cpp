@@ -20,7 +20,7 @@ private:
 	std::vector<std::pair<char, char>> snakeNode = { {10, 19}, {10, 9} ,{25, 9} };
 
 public:
-	disPlay() {
+	disPlay() : headX(10), headY(10), tailX(10), tailY(9), length(2), speed(1000) {
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 20; j++) {
 				disp[i][j] = "　";
@@ -65,7 +65,7 @@ public:
 };
 
 int main() {
-	disPlay * d = new disPlay;
+	disPlay* d = new disPlay;
 	d->setBody();
 	d->display();
 	delete d;

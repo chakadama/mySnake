@@ -14,12 +14,12 @@ constexpr auto col = 25;
 class disPlay {
 private:
 	int speed;
-	int length; // 蛇的长度
-	char headX; // 蛇头的横坐标
-	char headY; // 蛇头的纵坐标
-	char tailX; // 蛇尾的横坐标
-	char tailY; // 蛇尾的纵坐标
-	char direction; // 蛇的方向
+	int length;				// 蛇的长度
+	char headX;				// 蛇头的横坐标
+	char headY;				// 蛇头的纵坐标
+	char tailX;				// 蛇尾的横坐标
+	char tailY;				// 蛇尾的纵坐标
+	char direction;			// 蛇的方向
 
 	std::string disp[row][col];
 	std::vector<std::pair<char, char>> snakeNodeVector;
